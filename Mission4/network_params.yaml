@@ -1,0 +1,25 @@
+participants :
+  # First group of participants 
+  # 2 nodes running Geth (Execution Layer) and Lighthouse (Consensus Layer)
+  - el_type: geth           # Execution layer client
+    cl_type: lighthouse     # Consensus layer client
+    count: 2
+    prometheus_config:      # Prometheus configuration
+      scrape_interval: 15s  # Interval for scraping metrics
+      labels:
+          group: "Mission4" # Label to group
+
+  # Second group of participants 
+  # 1 nodes running Geth (Execution Layer) and Teku (Consensus Layer)
+  - el_type: geth
+    cl_type: teku
+    prometheus_config:
+      scrape_interval: 15s
+      labels:
+          group: "Mission4"
+
+network_params:
+  network_id: "290701"      # Custom network ID for test network
+
+additional_services:
+  - dora                    # Dora service for blockchain explorer/monitoring
