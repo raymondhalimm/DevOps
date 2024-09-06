@@ -10,6 +10,10 @@ The original chart can be found at the following GitHub repository: https://gith
 
 ## How to Use
 
-To use this customized Helm chart, run the following command:
+# Pre-requisites
+
+Run Mission 1 Terraform script to ensure the RDS and Kubernetes cluster is created. Any troubleshooting refer to Mission 1 README
+
+# To use this customized Helm chart, run the following command:
 
 helm install -f ./myvalues.yaml my-blockscout blockscout/blockscout-stack 
