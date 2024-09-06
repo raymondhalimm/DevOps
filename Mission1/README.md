@@ -2,11 +2,14 @@
 
 Mission 1 and Mission 2 might contain duplicate screenshots as Kubernetes Cluster and RDS are created using Terraform Script
 
-# To Run :
+## To Run :
 
 terraform fmt
+
 terraform init
+
 terraform validate
+
 terraform apply
 
 On the first apply process, there will be a failure because the kubernetes config is initialize at the previous config. Therefore, please RETRY by running
