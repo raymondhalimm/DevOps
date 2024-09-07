@@ -129,8 +129,8 @@ resource "kubernetes_secret" "db_credentials" {
   }
 
   data = {
-    username = aws_db_instance.education.username 
-    password = var.db_password                    
+    username = aws_db_instance.education.username
+    password = var.db_password
     host     = aws_db_instance.education.address
     port     = aws_db_instance.education.port
     url      = "postgresql://${aws_db_instance.education.username}:${var.db_password}@${aws_db_instance.education.address}:${aws_db_instance.education.port}/postgres"

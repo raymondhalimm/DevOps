@@ -5,3 +5,5 @@ There are some deployed services :
 - Kubernetes Cluster
 
 Due to cost-saving considerations, I have decided to shut down the service. However, if the team would like to see it deployed, please feel free to contact me.
+
+Some of the JSON RPC URL might be unavailable due to service being down cause by out of compute units.

@@ -76,8 +76,8 @@ blockscout:
   ##
   env: 
     ETHEREUM_JSONRPC_VARIANT: geth
-    ETHEREUM_JSONRPC_HTTP_URL: "https://eth-sepolia.g.alchemy.com/v2/h3oRObH8Cni75zP0ZPP3z2zL3jnw5ld5"
-    ETHEREUM_JSONRPC_TRACE_URL: "https://eth-sepolia.g.alchemy.com/v2/h3oRObH8Cni75zP0ZPP3z2zL3jnw5ld5"
+    ETHEREUM_JSONRPC_HTTP_URL: "https://eth-sepolia.g.alchemy.com/v2/A2Wb1025Rw_aY3r-JmXr87mI5BvuetZz"
+    ETHEREUM_JSONRPC_TRACE_URL: "https://eth-sepolia.g.alchemy.com/v2/A2Wb1025Rw_aY3r-JmXr87mI5BvuetZz"
     # NAME: VALUE
   # Refer to an existing Secret/ConfigMap
   extraEnv: 
@@ -133,7 +133,7 @@ blockscout:
       timeoutSeconds: 60
 
   service:
-    type: ClusterIP
+    type: LoadBalancer
     port: 80
   ## Configure ingress resource that allow you to access the blockscout installation.
   ## ref: http://kubernetes.io/docs/user-guide/ingress/
@@ -191,8 +191,9 @@ frontend:
   securityContext: {}
 
   service:
-    type: ClusterIP
-    port: 80
+    type: LoadBalancer
+    ports:
+    - port: 80
   ## Configure ingress resource that allow you to access the frontend installation.
   ## ref: http://kubernetes.io/docs/user-guide/ingress/
   ##
@@ -236,12 +237,10 @@ frontend:
   ## ref: https://github.com/blockscout/frontend/blob/main/docs/ENVS.md
   ##
   env: 
-    NEXT_PUBLIC_APP_HOST: "localhost"
-    NEXT_PUBLIC_APP_PORT: 8000
+    NEXT_PUBLIC_APP_HOST: "afaf738db0cea4ed8a98038f4c8455ee-214183891.ap-southeast-1.elb.amazonaws.com"
     NEXT_PUBLIC_APP_PROTOCOL: "http"
-    NEXT_PUBLIC_API_HOST: "localhost"
+    NEXT_PUBLIC_API_HOST: "adf9cc440daa74196a0b5e539b6a1a32-2088373813.ap-southeast-1.elb.amazonaws.com"
     NEXT_PUBLIC_API_PROTOCOL: "http"
-    NEXT_PUBLIC_API_PORT: 4000
     NEXT_PUBLIC_IS_TESTNET: true
     # NAME: VALUE
   # Refer to an existing Secret/ConfigMap

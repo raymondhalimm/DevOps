@@ -19,3 +19,22 @@ Run Mission 1 Terraform script to ensure the RDS and Kubernetes cluster is creat
 ## To use this customized Helm chart, run the following command:
 
 helm install -f ./myvalues.yaml my-blockscout blockscout/blockscout-stack 
+
+### To access the frontend and backend url
+
+kubectl get svc
+
+There will be an external IP for each service
+
+### To connect frontend to backend
+
+Open myvalues.yaml and navigate to the frontend section
+
+Find the "env" section
+
+Replace NEXT_PUBLIC_API_HOST value with backend url and NEXT_PUBLIC_APP_HOST value with frontend url
+
+Upgrade after replacing the configuration in myvalues.yaml
+
+helm upgrade my-blockscout blockscout/blockscout-stack -f myvalues.yaml
+
