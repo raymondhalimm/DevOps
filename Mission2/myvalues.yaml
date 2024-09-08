@@ -71,12 +71,6 @@ blockscout:
       requests:
         cpu: 500m
         memory: 1Gi
-  ## HPA Configuration, Enable it to true to apply it
-  hpa:
-    enabled: false
-    minReplicas: 1
-    maxReplicas: 10
-    targetCPUUtilizationPercentage: 70
   ## Blockscout ENV vars
   ## ref: https://docs.blockscout.com/for-developers/information-and-settings/env-variables
   ##

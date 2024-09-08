@@ -42,7 +42,7 @@ helm upgrade my-blockscout blockscout/blockscout-stack -f myvalues.yaml
 
 Comment out the replicasCount field to ensure no conflict when using hpa to dynamically scale your pods
 
-Find the HPA field under blockscout in myvalues.yaml and set enabled to true
+Ensure that the blockscout release name is not changed during install
 
 Then apply these commands
 
