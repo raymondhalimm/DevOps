@@ -49,3 +49,11 @@ Then apply these commands
 kubectl apply -f hpa.yaml
 
 helm upgrade my-blockscout blockscout/blockscout-stack -f myvalues.yaml 
+
+## Jenkins CI
+
+Jenkinsfile : Script to automate deployment
+
+ConsoleOutput.txt : Console Output for successful build using Jenkins CI
+
+

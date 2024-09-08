@@ -1,0 +1,149 @@
+Started by user Raymond Halim
+Obtained Mission2/Jenkinsfile from git https://github.com/raymondhalimm/DevOps
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /Users/raymondhalim/.jenkins/workspace/Mission2 Blockscout Helm Chart
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: git
+using credential github-credentials
+Cloning the remote Git repository
+Cloning repository https://github.com/raymondhalimm/DevOps
+ > git init /Users/raymondhalim/.jenkins/workspace/Mission2 Blockscout Helm Chart # timeout=10
+Fetching upstream changes from https://github.com/raymondhalimm/DevOps
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.3 (Apple Git-146)'
+using GIT_ASKPASS to set credentials Github Access to Private Repo
+ > git fetch --tags --force --progress -- https://github.com/raymondhalimm/DevOps +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/raymondhalimm/DevOps # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 37680cc42fc19ee36b4fb8b9b5e7f033ae700a1d (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 37680cc42fc19ee36b4fb8b9b5e7f033ae700a1d # timeout=10
+Commit message: "Added Jenkinsfile"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout Blockscout Helm Chart Repo)
+[Pipeline] sh
++ helm version
+version.BuildInfo{Version:"v3.15.4", GitCommit:"fa9efb07d9d8debbb4306d72af76a383895aa8c4", GitTreeState:"clean", GoVersion:"go1.22.6"}
+[Pipeline] dir
+Running in /Users/raymondhalim/.jenkins/workspace/Mission2 Blockscout Helm Chart/helm-repo
+[Pipeline] {
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/blockscout/helm-charts.git
+ > git init /Users/raymondhalim/.jenkins/workspace/Mission2 Blockscout Helm Chart/helm-repo # timeout=10
+Fetching upstream changes from https://github.com/blockscout/helm-charts.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.3 (Apple Git-146)'
+ > git fetch --tags --force --progress -- https://github.com/blockscout/helm-charts.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/blockscout/helm-charts.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 8c0d86b0d60bec57f553f8c29c6e9ddab60c951a (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 8c0d86b0d60bec57f553f8c29c6e9ddab60c951a # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b main 8c0d86b0d60bec57f553f8c29c6e9ddab60c951a # timeout=10
+Commit message: "Merge pull request #35 from blockscout/quicknode-marketplace-integration-0.1.6"
+ > git rev-list --no-walk 8c0d86b0d60bec57f553f8c29c6e9ddab60c951a # timeout=10
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Checkout My Mission2 YAML Repo)
+[Pipeline] dir
+Running in /Users/raymondhalim/.jenkins/workspace/Mission2 Blockscout Helm Chart/my-repo
+[Pipeline] {
+[Pipeline] git
+The recommended git tool is: git
+using credential github-credentials
+Cloning the remote Git repository
+Cloning repository https://github.com/raymondhalimm/DevOps.git
+ > git init /Users/raymondhalim/.jenkins/workspace/Mission2 Blockscout Helm Chart/my-repo # timeout=10
+Fetching upstream changes from https://github.com/raymondhalimm/DevOps.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.3 (Apple Git-146)'
+using GIT_ASKPASS to set credentials Github Access to Private Repo
+ > git fetch --tags --force --progress -- https://github.com/raymondhalimm/DevOps.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/raymondhalimm/DevOps.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 37680cc42fc19ee36b4fb8b9b5e7f033ae700a1d (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 37680cc42fc19ee36b4fb8b9b5e7f033ae700a1d # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b main 37680cc42fc19ee36b4fb8b9b5e7f033ae700a1d # timeout=10
+Commit message: "Added Jenkinsfile"
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Package Helm Chart + My YAML files)
+[Pipeline] sh
++ echo 'Packaging Helm chart with the additional YAML file...'
+Packaging Helm chart with the additional YAML file...
++ mkdir -p temp-chart
++ cp -r helm-repo/charts/blockscout-stack/CHANGELOG.md helm-repo/charts/blockscout-stack/Chart.yaml helm-repo/charts/blockscout-stack/README.md helm-repo/charts/blockscout-stack/templates helm-repo/charts/blockscout-stack/values.yaml temp-chart/
++ cp my-repo/Mission2/myvalues.yaml temp-chart/
++ cp my-repo/Mission2/hpa.yaml temp-chart/templates/
++ helm package ./temp-chart
+Successfully packaged chart and saved it to: /Users/raymondhalim/.jenkins/workspace/Mission2 Blockscout Helm Chart/blockscout-stack-1.6.6.tgz
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Helm Chart)
+[Pipeline] echo
+Building and packaging Helm chart...
+[Pipeline] sh
++ helm install my-blockscout ./helm-repo/charts/blockscout-stack -f ./my-repo/Mission2/myvalues.yaml
+coalesce.go:289: warning: destination for blockscout-stack.blockscout.env is a table. Ignoring non-table value ([])
+coalesce.go:289: warning: destination for blockscout-stack.frontend.env is a table. Ignoring non-table value ([])
+NAME: my-blockscout
+LAST DEPLOYED: Mon Sep  9 01:52:48 2024
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy Helm Chart with HPA)
+[Pipeline] echo
+Deploying Helm chart and HPA...
+[Pipeline] sh
++ kubectl apply -f ./my-repo/Mission2/hpa.yaml
+horizontalpodautoscaler.autoscaling/my-blockscout-stack-hpa unchanged
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+Pipeline completed!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
