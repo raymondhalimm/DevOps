@@ -237,9 +237,9 @@ frontend:
   ## ref: https://github.com/blockscout/frontend/blob/main/docs/ENVS.md
   ##
   env: 
-    NEXT_PUBLIC_APP_HOST: "afaf738db0cea4ed8a98038f4c8455ee-214183891.ap-southeast-1.elb.amazonaws.com"
+    NEXT_PUBLIC_APP_HOST: "a4ed7019a1c374d61b62858842c7d9f6-1457597074.ap-southeast-1.elb.amazonaws.com"
     NEXT_PUBLIC_APP_PROTOCOL: "http"
-    NEXT_PUBLIC_API_HOST: "adf9cc440daa74196a0b5e539b6a1a32-2088373813.ap-southeast-1.elb.amazonaws.com"
+    NEXT_PUBLIC_API_HOST: "ad582a6b0776540999118167576ea303-1886774573.ap-southeast-1.elb.amazonaws.com"
     NEXT_PUBLIC_API_PROTOCOL: "http"
     NEXT_PUBLIC_IS_TESTNET: true
     # NAME: VALUE
