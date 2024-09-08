@@ -38,3 +38,14 @@ Upgrade after replacing the configuration in myvalues.yaml
 
 helm upgrade my-blockscout blockscout/blockscout-stack -f myvalues.yaml
 
+### To Enable HPA
+
+Comment out the replicasCount field to ensure no conflict when using hpa to dynamically scale your pods
+
+Find the HPA field under blockscout in myvalues.yaml and set enabled to true
+
+Then apply these commands
+
+kubectl apply -f hpa.yaml
+
+helm upgrade my-blockscout blockscout/blockscout-stack -f myvalues.yaml 
